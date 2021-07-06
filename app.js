@@ -14,12 +14,24 @@ app.get('/about', (req, res) => {
   res.render('pages/about')
 })
 
-app.get('/collections', (req, res) => {
-  res.render('pages/collections')
+app.get('/restaurants', (req, res) => {
+  res.render('pages/restaurants')
 })
 
-app.get('/detail/:id', (req, res) => {
-  res.render('pages/detail')
+app.get('/drivers', (req, res) => {
+  res.render('pages/drivers')
+})
+
+app.get('/faqs', (req, res) => {
+  res.render('pages/faqs')
+})
+
+app.get('/contact', (req, res) => {
+  res.render('pages/contact')
+})
+
+app.get('/get-the-app', (req, res) => {
+  res.render('pages/get-the-app')
 })
 
 app.listen(port, () => {
