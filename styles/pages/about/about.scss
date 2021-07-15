@@ -1,0 +1,15 @@
+.about {
+
+}
+
+.about__warapper {
+
+}
+
+.about__title {
+  @extend %title-100;
+  margin: auto;
+  max-width: 124rem;
+  text-align: center;
+}
+

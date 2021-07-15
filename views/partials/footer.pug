@@ -1,0 +1,24 @@
+footer.footer
+  .footer__wrapper
+    section.footer__address
+      .footer__address__wrapper
+        each info in footer.data.address_column
+          .footer__address__title=info.title
+          a.footer__address__email(href=`mailto:${info.email}`)=info.email
+          .footer__address__location=info.address
+          .footer__address__phone=info.phone
+
+    section.footer__links
+      .footer__links__wrapper
+        each link in footer.data.links
+          a.footer__links__link(href=Link(link.links_navigation))=link.title
+
+    section.blog__posts
+      .blog__posts__wrapper
+        each post in footer.data.post
+          a.blog__posts__link(href=Link(post.post_blogs))=post.title
+
+    section.subscribe__form
+      .subscribe__form__wrapper
+        each form in footer.data.subscribe
+          .subscribe__form__title=form.title

@@ -1,37 +1,111 @@
+require('dotenv').config()
+
+const bodyParser = require('body-parser')
+const errorHandler = require('errorhandler')
 const express = require('express')
+const logger = require('morgan')
+const methodOverride = require('method-override')
+
 const app = express()
 const path = require('path')
 const port = 3000
 
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(errorHandler())
+app.use(express.static(path.join(__dirname, 'public')))
+app.use(logger('dev'))
+app.use(methodOverride())
+
+const Prismic = require('@prismicio/client')
+const PrismicDOM = require('prismic-dom')
+
+// Initialize the prismic.io api
+const initApi = (req) => {
+  return Prismic.getApi(process.env.PRISMIC_ENDPOINT, {
+    acessToken: process.env.PRISMIC_ACCESS_TOKEN,
+    req
+  })
+}
+
+// Link Resolver
+const handellinkResolver = (doc) => {
+  if (doc.type === 'about') {
+    return '/about'
+  }
+
+  if (doc.type === 'blogs') {
+    return `/blogs/${doc.uid}`
+  }
+
+  if (doc.type === 'restaurant_app') {
+    return '/restaurant-app'
+  }
+
+  if (doc.type === 'drivers_app') {
+    return '/drivers-app'
+  }
+
+  if (doc.type === 'faqs') {
+    return '/faqs'
+  }
+
+  if (doc.type === 'contact') {
+    return '/contact'
+  }
+
+  return '/'
+}
+
+// Middleware to inject prismic context
+app.use((req, res, next) => {
+  res.locals.Link = handellinkResolver
+
+  // add PrismicDOM in locals to access them in templates.
+  res.locals.PrismicDOM = PrismicDOM
+
+  next()
+})
+
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'pug')
 
-app.get('/', (req, res) => {
-  res.render('pages/home')
+const handleRequest = async (api) => {
+  const footer = await api.getSingle('footer')
+  const meta = await api.getSingle('meta')
+  const navigation = await api.getSingle('navigation')
+  const preloader = await api.getSingle('preloader')
+
+  return {
+    footer,
+    meta,
+    navigation,
+    preloader
+  }
+}
+
+app.get('/', async (req, res) => {
+  const api = await initApi(req)
+  const defaults = await handleRequest(api)
+  const home = await api.getSingle('home')
+
+  res.render('pages/home', {
+    ...defaults,
+    home
+  })
 })
 
-app.get('/about', (req, res) => {
-  res.render('pages/about')
-})
+app.get('/about', async (req, res) => {
+  const api = await initApi(req)
+  const defaults = await handleRequest(api)
+  const about = await api.getSingle('about')
 
-app.get('/restaurants', (req, res) => {
-  res.render('pages/restaurants')
-})
+  console.log(about.data)
 
-app.get('/drivers', (req, res) => {
-  res.render('pages/drivers')
-})
-
-app.get('/faqs', (req, res) => {
-  res.render('pages/faqs')
-})
-
-app.get('/contact', (req, res) => {
-  res.render('pages/contact')
-})
-
-app.get('/get-the-app', (req, res) => {
-  res.render('pages/get-the-app')
+  res.render('pages/about', {
+    ...defaults,
+    about
+  })
 })
 
 app.listen(port, () => {

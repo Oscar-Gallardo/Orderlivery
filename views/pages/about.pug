@@ -4,4 +4,38 @@ block variables
   - var template = 'about'
 
 block content
-  h1.collections__title About
+  .about
+    .about__warapper
+      section.about__hero
+        .about__hero__wrapper
+          .about__hero__title
+            .about__hero__title__text=about.data.title
+
+      section.about__message
+        .about__message__wrapper
+          .about__message__title
+            .about__message__title__text=about.data.title
+
+          .about__message__sub__title
+            .about__message__title__text=about.data.sub_title
+
+          .about__message__description
+            .about__message__description!=about.data.description.replace(/\n/g, '<br/>')
+
+      section.about__video
+        .about__video__wrapper
+          .about_video_iframe!=about.data.youtube_video.html
+
+      each section in about.data.body
+        if section.slice_type === 'reasons_grid'
+          section.why__switch
+            .why__switch__wrapper
+              .why__switch__title=section.primary.grid_title
+
+              .why__switch__list
+                .Why__switch__list__wrapper
+                  each item in section.items
+                    .why__switch__list__icon(clsss=item.grid_reason_icon)
+                    a.why__switch__list__link(href=Link(item.grid_reason_link))=item.grid_reason_title
+
+
