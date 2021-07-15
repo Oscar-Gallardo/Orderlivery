@@ -38,8 +38,8 @@ const handellinkResolver = (doc) => {
     return `/blogs/${doc.uid}`
   }
 
-  if (doc.type === 'restaurant_app') {
-    return '/restaurant-app'
+  if (doc.type === 'contact') {
+    return '/contact'
   }
 
   if (doc.type === 'drivers_app') {
@@ -50,8 +50,8 @@ const handellinkResolver = (doc) => {
     return '/faqs'
   }
 
-  if (doc.type === 'contact') {
-    return '/contact'
+  if (doc.type === 'restaurant_app') {
+    return '/restaurant-app'
   }
 
   return '/'
@@ -100,11 +100,27 @@ app.get('/about', async (req, res) => {
   const defaults = await handleRequest(api)
   const about = await api.getSingle('about')
 
-  console.log(about.data)
-
   res.render('pages/about', {
     ...defaults,
     about
+  })
+})
+
+app.get('/blogs/:uid', async (req, res) => {
+  const api = await initApi(req)
+  const defaults = await handleRequest(api)
+
+  const blogPost = await api.getByUID('blogs', req.params.uid, {
+    fetchLinks: 'collection.title'
+  })
+
+  blogPost.data.blog.forEach((content, index) => {
+    console.log(content, index)
+  })
+
+  res.render('pages/blogs', {
+    ...defaults,
+    blogPost
   })
 })
 
