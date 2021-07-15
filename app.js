@@ -124,6 +124,32 @@ app.get('/blogs/:uid', async (req, res) => {
   })
 })
 
+app.get('/contact', async (req, res) => {
+  const api = await initApi(req)
+  const defaults = await handleRequest(api)
+  const contact = await api.getSingle('contact')
+
+  console.log(contact.data)
+
+  res.render('pages/contact', {
+    ...defaults,
+    contact
+  })
+})
+
+app.get('/faqs', async (req, res) => {
+  const api = await initApi(req)
+  const defaults = await handleRequest(api)
+  const faqs = await api.getSingle('faqs')
+
+  console.log(faqs.data.body)
+
+  res.render('pages/faqs', {
+    ...defaults,
+    faqs
+  })
+})
+
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
 })

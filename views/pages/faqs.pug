@@ -1,0 +1,35 @@
+extends ../base.pug
+
+block variables
+  - var template = 'faqs'
+
+block content
+  .faqs
+    .faqs__wrapper
+      section.faqs__hero
+        .faqs__hero__wrapper
+          .faqs__hero__title=faqs.data.title
+
+      section.faqs__sections
+        .faqs__sections__wrapper
+          each faqs__section in faqs.data.body
+            if faqs__section.slice_type === 'faq_section'
+              .faq__section
+                .faq__section__wrapper
+                  each title in faqs__section.primary.title
+                    .faq__section__title=title.text
+                      .faq__question
+                        .faq__question__wrapper
+                          each question in faqs__section.items
+                            each question_title in question.title
+                              .faq__question__title=question_title.text
+                            each question_answer in question.text
+                              .faq__question__answer=question_answer.text
+
+      section.faqs__form
+        .faqs__form__wrapper
+          each faqs__section in faqs.data.body
+            if faqs__section.slice_type === 'question_form'
+              .faqs__form__section__title=faqs__section.primary.section_title
+              .faqs__form__section__sub__title=faqs__section.primary.sub_title
+              .form
