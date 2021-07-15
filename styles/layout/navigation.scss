@@ -1,9 +1,13 @@
 .navigation {
-
+  background-color: $color-mango-tango;
+  color: $color-champagne-pink;
+  position: fixed;
+  width: 100%;
 }
 
 .navigation__wrapper {
-
+  display:flex;
+  justify-content: space-between;
 }
 
 .navigation__link {
@@ -11,18 +15,22 @@
 }
 
 .navigation__link__icon {
-
+  width: 60%;
+  padding: 5rem;
 }
 
 .navigation__list {
-
+  display:flex;
+  align-items:center;
 }
 
 .navigation__list__item {
-
+  margin-right: 10rem;
 }
 
 .navigation__list__link {
-
+  &:hover {
+    border-bottom: 2px solid $color-champagne-pink;
+  }
 }
 

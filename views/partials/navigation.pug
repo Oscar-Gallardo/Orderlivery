@@ -1,9 +1,9 @@
-nav.navigation
+nav.navigation(data-logo-default='dark' data-logo-sticky='light')
   .navigation__wrapper
     a.navigation__link(href="/")
-      img.navigation__link__icon(src=navigation.data.logo.url alt=navigation.data.logo.alt)
+      img.navigation__link__icon(src=navigation.data.logo_dark.url alt=navigation.data.logo_dark.alt)
 
-    ul.navigation__list
+    .navigation__list
       each item in navigation.data.list
-        li.navigation__list__item
+        .navigation__list__item
           a.navigation__list__link(href=Link(item.link))=item.text
