@@ -110,9 +110,7 @@ app.get('/blogs/:uid', async (req, res) => {
   const api = await initApi(req)
   const defaults = await handleRequest(api)
 
-  const blogPost = await api.getByUID('blogs', req.params.uid, {
-    fetchLinks: 'collection.title'
-  })
+  const blogPost = await api.getByUID('blogs', req.params.uid)
 
   blogPost.data.blog.forEach((content, index) => {
     console.log(content, index)
@@ -129,11 +127,22 @@ app.get('/contact', async (req, res) => {
   const defaults = await handleRequest(api)
   const contact = await api.getSingle('contact')
 
-  console.log(contact.data)
-
   res.render('pages/contact', {
     ...defaults,
     contact
+  })
+})
+
+app.get('/drivers-app', async (req, res) => {
+  const api = await initApi(req)
+  const defaults = await handleRequest(api)
+  const driversApp = await api.getSingle('drivers_app')
+
+  console.log(driversApp.data.body[4])
+
+  res.render('pages/drivers-app', {
+    ...defaults,
+    driversApp
   })
 })
 
@@ -141,8 +150,6 @@ app.get('/faqs', async (req, res) => {
   const api = await initApi(req)
   const defaults = await handleRequest(api)
   const faqs = await api.getSingle('faqs')
-
-  console.log(faqs.data.body)
 
   res.render('pages/faqs', {
     ...defaults,

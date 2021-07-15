@@ -1,0 +1,63 @@
+extends ../base.pug
+
+block variables
+  - var template = 'drivers_app'
+
+block content
+  .drivers__app
+    .drivers__app__wrapper
+      .drivers__app__hero
+        section.drivers__app__hero__wrapper
+          .drivers__app__hero__title=driversApp.data.title
+          .drivers__app__hero__description=driversApp.data.description
+
+        each section in driversApp.data.body
+          if section.slice_type === 'become_envoy'
+            section.become__envoy
+              .become__envoy__wrapper
+                .become__envoy__title=section.primary.become_envoy_title
+                .become__envoy__description=section.primary.become_envoy_description
+                .becmoe__envoy__video!=section.primary.become_envoy_video.html
+
+          if section.slice_type === 'reasons_grid'
+            section.reasons__grid
+              .reasons__grid__title=section.primary.grid_title
+                each reason in section.items
+                  .reason__icon=reason.grid_reason_icon
+                  .reason__title=reason.grid_reason_title
+
+          if section.slice_type === 'alternate_grid'
+            section.alternate__grid
+              .alternate__grid__wrapper
+                each title in section.primary.title
+                  .alternate__grid__item__title=title.text
+
+                each description in section.primary.description
+                  .alternate__grid__item__description=description.text
+
+                each item in section.items
+                  .column__item
+                    .column__item__wrapper
+                      each title in item.title
+                        .column__item__title=title.text
+                      each description in item.description
+                        .column__item__description=description.text
+
+          if section.slice_type === 'content'
+            section.content
+              .content__wrapper
+                each label in section.primary.label
+                  .content__title=label.text
+
+                  .list
+                      .list__wrapper
+                        each list in section.primary.list
+                          if list.type === 'paragraph'
+                            .list__title=list.text
+
+                          if list.type === 'list-item'
+                            .list__item=list.text
+
+            .content__image
+              .content__image__wrapper
+                img(src=section.primary.image.url alt=section.primary.image.alt)
