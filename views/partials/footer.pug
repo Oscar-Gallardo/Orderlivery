@@ -1,5 +1,8 @@
 footer.footer
   .footer__wrapper
+    section.footer__logo
+      img.footer__logo__image(src=footer.data.logo.url alt=footer.data.logo.alt)
+
     section.footer__address
       .footer__address__wrapper
         each info in footer.data.address_column
@@ -15,10 +18,12 @@ footer.footer
 
     section.blog__posts
       .blog__posts__wrapper
+        .blog__post__title
+          |Blogs
         each post in footer.data.post
           a.blog__posts__link(href=Link(post.post_blogs))=post.title
 
     section.subscribe__form
       .subscribe__form__wrapper
         each form in footer.data.subscribe
-          .subscribe__form__title=form.title
+          a.subscribe__form__link(href=Link(form.link))=form.title

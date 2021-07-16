@@ -1,0 +1,102 @@
+.footer {
+  background-color: $color-champagne-pink;
+  color: $color-mango-tango;
+  display: flex;
+  justify-content: center;
+  padding: 12rem 5rem;
+}
+
+.footer__wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  .subscribe__form:last-child {
+    align-self: center;
+  }
+}
+
+.footer__logo {
+  margin-right: 10rem;
+}
+
+.footer__image {
+
+}
+
+.footer__address {
+  margin-right: 10rem;
+}
+
+.footer__address__wrapper {
+
+}
+
+.footer__address__title {
+
+}
+
+.footer__address__email {
+
+}
+
+.footer__address__location {
+
+}
+
+.footer__address__phone {
+
+}
+
+.footer__links {
+  margin-right: 10rem;
+}
+
+.footer__links__wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__links__link {
+
+}
+
+.blog__posts {
+  margin-right: 10rem;
+}
+
+.blog__posts__wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.blog__post__title {
+
+}
+
+.blog__posts__link {
+
+}
+
+.subscribe__form {
+
+}
+
+.subscribe__form__wrapper {
+
+}
+
+.subscribe__form__link {
+  background-color: $color-mango-tango;
+  padding: 2rem 5rem 2rem 5rem;
+  border-radius: 5rem;
+  color: $color-champagne-pink;
+  box-shadow: 0px 30px 60px 0px rgb(52 27 159 / 10%);
+  &:hover {
+    background-color: $color-champagne-pink;
+    color: $color-mango-tango;
+    border: 1px solid $color-mango-tango;
+    box-shadow: none;
+  }
+}
+

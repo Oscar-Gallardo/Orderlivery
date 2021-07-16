@@ -42,26 +42,29 @@ block content
                   .what__we__guarantee__content__description=section.primary.guarantee_description
 
               .what__we__guarantee__list
+                .what__we__guarantee__title=section.primary.list_title
                 .what__we__guarantee__list__wrapper
-                  .what__we__guarantee__list__title=section.primary.list_title
-                    each item in section.items
-                      .what__we__guarantee__list__icon(class=item.guarantee_list_icon)
-                      .what__we__guarantee__list__title=item.guarantee_list_title
+                  each item in section.items
+                    .list__item
+                      .list__item__wrapper
+                        .what__we__guarantee__list__icon(class=item.guarantee_list_icon)
+                        .what__we__guarantee__list__title=item.guarantee_list_title
 
         if section.slice_type === 'content'
-          section.content
+          section.content(class=`${section.primary.type == 'Left' ? 'content--left' : 'content--right'}`)
             .content__wrapper
-              .content__info
+              .content__info__box
                 .content__title=section.primary.label
                 .content__description=section.primary.description
                 a.content__link(href=Link(section.primary.link))=section.primary.link_label
 
-
-              img.content__image(src=section.primary.image.url alt=section.primary.image.alt)
+              figure.content__media
+                img.content__media__image(src=section.primary.image.url alt=section.primary.image.alt)
 
         if section.slice_type === 'call_to_action'
           section.cta__banner
             .cta__banner__wrapper
-              .cta__banner__title=section.primary.cta_title
-              .cta__banner__description=section.primary.description
+              .cta__content__box
+                  .cta__content__title=section.primary.cta_title
+                  .cta__content__description=section.primary.description
               a.cta__banner__link(href=Link(section.primary.button_link))=section.primary.button_label
