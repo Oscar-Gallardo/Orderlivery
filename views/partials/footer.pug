@@ -13,13 +13,13 @@ footer.footer
 
     section.footer__links
       .footer__links__wrapper
+        .footer__links__title Links
         each link in footer.data.links
           a.footer__links__link(href=Link(link.links_navigation))=link.title
 
     section.blog__posts
       .blog__posts__wrapper
-        .blog__post__title
-          |Blogs
+        .blog__post__title Blogs
         each post in footer.data.post
           a.blog__posts__link(href=Link(post.post_blogs))=post.title
 

@@ -33,15 +33,18 @@
 }
 
 .footer__address__title {
-
+  @extend %title-20;
+  margin-bottom: 4rem;
 }
 
 .footer__address__email {
-
+  display: block;
+  margin-bottom: 1rem;
 }
 
 .footer__address__location {
-
+  margin-bottom: 1rem;
+  width: 25rem;
 }
 
 .footer__address__phone {
@@ -57,8 +60,13 @@
   flex-direction: column;
 }
 
-.footer__links__link {
+.footer__links__title {
+  @extend %title-20;
+  margin-bottom: 4rem;
+}
 
+.footer__links__link {
+  margin-bottom: 0.8rem;
 }
 
 .blog__posts {
@@ -71,11 +79,12 @@
 }
 
 .blog__post__title {
-
+  @extend %title-20;
+  margin-bottom: 4rem;
 }
 
 .blog__posts__link {
-
+  margin-bottom: 0.8rem;
 }
 
 .subscribe__form {
