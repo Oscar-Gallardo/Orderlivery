@@ -3,24 +3,20 @@ extends ../base.pug
 block variables
   - var template = 'about'
 
-block content
+block main
   .about
-    .about__warapper
+    .about__wrapper
       section.about__hero
         .about__hero__wrapper
-          .about__hero__title
-            .about__hero__title__text=about.data.title
+          .about__hero__title=about.data.title
 
       section.about__message
         .about__message__wrapper
-          .about__message__title
-            .about__message__title__text=about.data.title
-
           .about__message__sub__title
-            .about__message__title__text=about.data.sub_title
+            .about__message__sub__title__text=about.data.sub_title
 
           .about__message__description
-            .about__message__description!=about.data.description.replace(/\n/g, '<br/>')
+            .about__message__description__text!=about.data.description.replace(/\n/g, '<br/>')
 
       section.about__video
         .about__video__wrapper
@@ -35,7 +31,7 @@ block content
               .why__switch__list
                 .Why__switch__list__wrapper
                   each item in section.items
-                    .why__switch__list__icon(clsss=item.grid_reason_icon)
-                    a.why__switch__list__link(href=Link(item.grid_reason_link))=item.grid_reason_title
-
-
+                    .list__item
+                      .list__item__wrapper
+                        .list__item__icon(clsss=item.grid_reason_icon)
+                        a.list__item__link(href=Link(item.grid_reason_link))=item.grid_reason_title

@@ -138,7 +138,7 @@ app.get('/drivers-app', async (req, res) => {
   const defaults = await handleRequest(api)
   const driversApp = await api.getSingle('drivers_app')
 
-  console.log(driversApp.data.body[4])
+  console.log(driversApp.data.body[2])
 
   res.render('pages/drivers-app', {
     ...defaults,

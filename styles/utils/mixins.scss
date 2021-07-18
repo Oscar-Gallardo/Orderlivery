@@ -12,6 +12,11 @@
   justify-content: center;
 }
 
+%section {
+  margin: 10rem 0;
+  max-width: 100%;
+}
+
 @mixin ratio ($height, $width) {
   font-size: 0;
   overflow: hidden;

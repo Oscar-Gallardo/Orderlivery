@@ -3,7 +3,7 @@ extends ../base.pug
 block variables
   - var template = 'contact'
 
-block content
+block main
   .contact
     .contact__wrapper
       section.contact__hero
@@ -13,9 +13,11 @@ block content
       section.contact__location
         .contact__location__wrapper
           .contact__location__title=contact.data.label
-            each content in contact.data.location
-              .contact__location__content=content.text
+          .contact__location__content
+            .contact__location__content__wrapper
+              each item in contact.data.location
+                .contact__location__content__item=item.text
 
-      section.google__maps(style='display:flex;justify-content:center')
-        .google__maps__wrapper(style='width:80%')
+      section.google__maps
+        .google__maps__wrapper
           iframe(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3357.213332023707!2d-97.05997268486699!3d32.706958494861546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x864e8727ab27d391%3A0xe3fc1cc96de4e614!2sOrderlivery!5e0!3m2!1sen!2sus!4v1626313585465!5m2!1sen!2sus" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy")
