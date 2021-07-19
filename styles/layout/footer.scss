@@ -14,10 +14,19 @@
   .subscribe__form:last-child {
     align-self: center;
   }
+  @include media('<phone') {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 }
 
 .footer__logo {
   margin-right: 10rem;
+  @include media('<phone') {
+    margin-right: 0;
+    margin-bottom: 5rem;
+  }
 }
 
 .footer__image {
@@ -26,6 +35,10 @@
 
 .footer__address {
   margin-right: 10rem;
+  @include media('<phone') {
+    margin-right: 0;
+    margin-bottom: 5rem;
+  }
 }
 
 .footer__address__wrapper {
@@ -53,6 +66,10 @@
 
 .footer__links {
   margin-right: 10rem;
+  @include media('<phone') {
+    margin-right: 0;
+    margin-bottom: 5rem;
+  }
 }
 
 .footer__links__wrapper {
@@ -71,6 +88,10 @@
 
 .blog__posts {
   margin-right: 10rem;
+  @include media('<phone') {
+    margin-right: 0;
+    margin-bottom: 5rem;
+  }
 }
 
 .blog__posts__wrapper {

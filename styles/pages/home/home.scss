@@ -18,6 +18,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  @include media('<phone') {
+    flex-direction: column-reverse;
+  }
 }
 
 .home__content {
@@ -202,24 +205,41 @@
   .content--right & {
     flex-direction: row-reverse;
   }
+  @include media('<phone') {
+    flex-direction: column-reverse;
+    align-items: center;
+    .content--right & {
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+  }
 }
 
 .content__info__box {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  @include media('<phone') {
+    align-items: center;
+  }
 }
 
 .content__title {
   @extend %title-30;
   width: 60rem;
   margin-bottom: 2.5rem;
+  @include media('<phone') {
+    text-align: center;
+  }
 }
 
 .content__description {
   @extend %description-14;
   width: 66rem;
   margin-bottom: 2.5rem;
+  @include media('<phone') {
+    text-align: center;
+  }
 }
 
 .content__link {
@@ -253,6 +273,11 @@
     margin-left: 12rem;
     width: 84.2rem;
   }
+  @include media('<phone') {
+    .content:nth-child(4) & {
+      margin-left: 0;
+    }
+  }
 }
 
 .content__media__image {
@@ -274,11 +299,20 @@
   &:hover {
     box-shadow: none;
   }
+  @include media('<phone') {
+    padding: 7rem 5rem;
+    margin: 5rem 2rem;
+  }
 }
 
 .cta__banner__wrapper {
   display: flex;
   align-items: center;
+  @include media('<phone') {
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
 .cta__content__box {
@@ -286,20 +320,37 @@
   flex-direction: column;
   width: 66rem;
   margin-right: 10rem;
+  @include media('<phone') {
+    margin-right: 0;
+  }
 }
 
 .cta__content__title {
   @extend %title-53;
+  @include media('<phone') {
+    text-align: center;
+    order: 2;
+  }
 }
 
 .cta__content__description {
   @extend %description-12;
   margin-bottom: 1.5rem;
+  @include media('<phone') {
+    order: 3;
+    text-align: center;
+    margin-bottom: 5rem;
+  }
 }
 
 .cta__media {
   width: 50rem;
   height: auto;
+  @include media('<phone') {
+    align-self: center;
+    margin-bottom: 5rem;
+    order: 1;
+  }
 }
 
 .cta__image {

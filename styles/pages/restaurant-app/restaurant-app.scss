@@ -152,11 +152,15 @@ iframe {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  text-align: center;
   height: 100%;
   padding: 5rem;
   width: 100%;
   &:hover {
     box-shadow: none;
+  }
+  @include media('<phone') {
+    padding: 2rem;
   }
 }
 
