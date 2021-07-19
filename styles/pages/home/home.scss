@@ -113,7 +113,7 @@
 .list__item__link {
   color: $color-mango-tango;
   .list__item__wrapper:hover & {
-    border-bottom: 2px solid $color-mango-tango;
+    border-bottom: 1px solid $color-mango-tango;
   }
 }
 
@@ -169,7 +169,7 @@
 .what__we__guarantee__list__title {
   color: $color-mango-tango;
   .list__item__wrapper:hover & {
-    border-bottom: 2px solid $color-mango-tango;
+    border-bottom: 1px solid $color-mango-tango;
   }
 }
 
@@ -226,7 +226,7 @@
     width: 19rem;
   }
   .content:nth-child(5) & {
-    width: 21rem;
+    width: 21.5rem;
   }
 }
 

@@ -104,7 +104,7 @@ iframe {
 .list__item__title {
   color: $color-mango-tango;
   .list__item__wrapper:hover & {
-    border-bottom: 2px solid $color-mango-tango;
+    border-bottom: 1px solid $color-mango-tango;
   }
 }
 
@@ -196,47 +196,47 @@ iframe {
   @extend %description-14;
 }
 
-.content {
+[data-template='drivers_app'] .content {
   @extend %section;
   display: flex;
   justify-content: center;
 }
 
-.content__wrapper {
+[data-template='drivers_app'] .content__wrapper {
   display: flex;
   flex-direction: row-reverse;
 }
 
-.content__title {
+[data-template='drivers_app'] .content__title {
   @extend %title-30;
   margin-bottom: 2.5rem;
 }
 
-.list__box {
+[data-template='drivers_app'] .list__box {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.list__title {
+[data-template='drivers_app'] .list__title {
   @extend %title-20;
   text-decoration: underline;
   margin-left: 1rem;
 }
 
-.list__text {
+[data-template='drivers_app'] .list__text {
   @extend %description-12;
   margin-left: 2rem;
   margin-top: 0.25rem;
 }
 
-.content__media {
+[data-template='drivers_app'] .content__media {
   height: 80.8rem;
   margin-left: 18rem;
   width: 81.8rem;
 }
 
-.content__media__image {
+[data-template='drivers_app'] .content__media__image {
   height: 100%;
   width: 100%;
   object-fit: cover;

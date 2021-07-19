@@ -1,0 +1,55 @@
+extends ../base.pug
+
+block variables
+  - var template = 'restaurant-app'
+
+block main
+  .restaurant__app
+    .restaurant__app__wrapper
+      section.restaurant__app__hero
+        .restaurant__app__hero__wrapper
+          .restaurant__app__hero__content
+            .restaurant__app__hero__content__wrapper
+              .restaurant__app__hero__title=restaurantApp.data.title
+              .restaurant__app__hero__description=restaurantApp.data.description
+
+          .restaurant__app__hero__media
+            img.restaurant__app__hero__image(src=restaurantApp.data.image.url alt=restaurantApp.data.image.alt)
+
+      each section in restaurantApp.data.body
+        if section.slice_type === 'content'
+          section.content(class=`${section.primary.type == 'Left' ? 'content--left' : 'content--right'}`)
+            .content__wrapper
+              .content__info
+                each label in section.primary.content_label
+                  .content__label=label.text
+
+                each description in section.primary.content_description
+                  .content__description=description.text
+
+              .content__media
+                img.content__image(src=section.primary.image.url alt=section.primary.image.alt)
+
+        if section.slice_type === 'reasons_grid'
+          section.grid
+            .grid__wrapper
+              .grid__title=section.primary.grid_title
+
+            .list
+              .list__wrapper
+                each item in section.items
+                  .list__item
+                    .list__item__wrapper
+                      .list__icon=item.grid_reason_icon
+                      .list__title=item.grid_reason_title
+
+        if section.slice_type === 'customer_logos'
+          section.logos
+            .logos__wrapper
+              .logos__title=section.primary.cta
+
+              .logo__list
+                .logo__list__wrapper
+                  each logo in section.items
+                    a.link(href=logo.restaurant_link.url target='_blank')
+                      img.logo(src=logo.restaurant_logo.url alt=logo.restaurant_logo.alt)

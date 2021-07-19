@@ -30,7 +30,8 @@
 
 .navigation__list__link {
   &:hover {
-    border-bottom: 2px solid $color-champagne-pink;
+    border-bottom: 1px solid $color-champagne-pink;
+    padding-bottom: 0.5rem;
   }
 }
 

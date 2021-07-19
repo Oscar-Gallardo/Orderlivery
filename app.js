@@ -112,10 +112,6 @@ app.get('/blogs/:uid', async (req, res) => {
 
   const blogPost = await api.getByUID('blogs', req.params.uid)
 
-  blogPost.data.blog.forEach((content, index) => {
-    console.log(content, index)
-  })
-
   res.render('pages/blogs', {
     ...defaults,
     blogPost
@@ -138,8 +134,6 @@ app.get('/drivers-app', async (req, res) => {
   const defaults = await handleRequest(api)
   const driversApp = await api.getSingle('drivers_app')
 
-  console.log(driversApp.data.body[2])
-
   res.render('pages/drivers-app', {
     ...defaults,
     driversApp
@@ -154,6 +148,19 @@ app.get('/faqs', async (req, res) => {
   res.render('pages/faqs', {
     ...defaults,
     faqs
+  })
+})
+
+app.get('/restaurant-app', async (req, res) => {
+  const api = await initApi(req)
+  const defaults = await handleRequest(api)
+  const restaurantApp = await api.getSingle('restaurant_app')
+
+  console.log(restaurantApp.data.body)
+
+  res.render('pages/restaurant-app', {
+    ...defaults,
+    restaurantApp
   })
 })
 
