@@ -16,6 +16,16 @@ block main
           .restaurant__app__hero__media
             img.restaurant__app__hero__image(src=restaurantApp.data.image.url alt=restaurantApp.data.image.alt)
 
+      each section in restaurantApp.data.body
+        if section.slice_type === 'become_envoy'
+          section.become__envoy
+            .become__envoy__wrapper
+              .become__envoy__title=section.primary.become_envoy_title
+              .become__envoy__description=section.primary.become_envoy_description
+            .become__envoy__video
+              .become__envoy__video__wrapper
+                .become__envoy__video__iframe!=section.primary.become_envoy_video.html
+
       section.hubspot__form
         .hubspot__form__wrapper
           .hubspot__form__title Get Started
@@ -50,10 +60,11 @@ block main
 
             .list
               .list__wrapper
-                each item in section.items
+                each item, index in section.items
                   .list__item
                     .list__item__wrapper
-                      .list__icon=item.grid_reason_icon
+                      img.list__icon(src=item.grid_reason_icon.url alt=item.grid_reason_icon.alt)
+
                       .list__title=item.grid_reason_title
 
         if section.slice_type === 'customer_logos'

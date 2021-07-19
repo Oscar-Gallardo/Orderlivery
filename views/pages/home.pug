@@ -27,10 +27,16 @@ block main
 
               .why__switch__list
                 .Why__switch__list__wrapper
-                  each item in section.items
+                  each item, index in section.items
                     .list__item
                       .list__item__wrapper
                         .list__item__icon(clsss=item.grid_reason_icon)
+                          if index === 0
+                            i(class="fas fa-shipping-fast")
+                          if index === 1
+                            i(class="fas fa-hand-holding-usd")
+                          if index === 2
+                            i(class="fas fa-calculator")
                         a.list__item__link(href=Link(item.grid_reason_link))=item.grid_reason_title
 
         if section.slice_type === 'guarantee_list'
@@ -44,10 +50,18 @@ block main
               .what__we__guarantee__list
                 .what__we__guarantee__title=section.primary.list_title
                 .what__we__guarantee__list__wrapper
-                  each item in section.items
+                  each item, index in section.items
                     .list__item
                       .list__item__wrapper
                         .what__we__guarantee__list__icon(class=item.guarantee_list_icon)
+                          if index === 0
+                            i(class="fas fa-concierge-bell")
+                          if index === 1
+                            i(class="fas fa-shipping-fast")
+                          if index === 2
+                            i(class="fas fa-headset")
+                          if index === 3
+                            i(class="fas fa-credit-card")
                         .what__we__guarantee__list__title=item.guarantee_list_title
 
         if section.slice_type === 'content'
@@ -67,4 +81,6 @@ block main
               .cta__content__box
                   .cta__content__title=section.primary.cta_title
                   .cta__content__description=section.primary.description
+                  .cta__media
+                    img.cta__image(src=section.primary.image.url alt=section.primary.image.alt)
               a.cta__banner__link(href=Link(section.primary.button_link))=section.primary.button_label

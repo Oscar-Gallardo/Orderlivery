@@ -30,8 +30,14 @@ block main
 
               .why__switch__list
                 .Why__switch__list__wrapper
-                  each item in section.items
+                  each item, index in section.items
                     .list__item
                       .list__item__wrapper
                         .list__item__icon(clsss=item.grid_reason_icon)
+                          if index === 0
+                            i(class="fas fa-shipping-fast")
+                          if index === 1
+                            i(class="fas fa-hand-holding-usd")
+                          if index === 2
+                            i(class="fas fa-calculator")
                         a.list__item__link(href=Link(item.grid_reason_link))=item.grid_reason_title
