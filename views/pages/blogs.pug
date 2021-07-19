@@ -6,18 +6,17 @@ block variables
 block main
   .blog__post
     .blog__post__wrapper
-      .blog__post__hero
+      section.blog__post__hero
         .blog__post__hero__wrapper
           .blog__post__date=blogPost.data.date
           .blog__post__title=blogPost.data.title
           .blog__post__category=blogPost.data.category
 
-      .blog__post__content
+      section.blog__post__content
         .blog__post__content__wrapper
           each content in blogPost.data.blog
-            .blog__post__content__title=content.blog_content_title
-              each description in content.blog_content_description
-                .blog__post__content__description=description.text
+            each description in content.blog_content_description
+              .blog__post__content__description=description.text
 
 
-          .blog__post__author=blogPost.data.author
+          .blog__post__author=`Written By: ${blogPost.data.author}`
