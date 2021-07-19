@@ -50,6 +50,10 @@ const handellinkResolver = (doc) => {
     return '/faqs'
   }
 
+  if (doc.type === 'newsletter_form') {
+    return '/subscribe'
+  }
+
   if (doc.type === 'restaurant_app') {
     return '/restaurant-app'
   }
@@ -156,11 +160,20 @@ app.get('/restaurant-app', async (req, res) => {
   const defaults = await handleRequest(api)
   const restaurantApp = await api.getSingle('restaurant_app')
 
-  console.log(restaurantApp.data.body)
-
   res.render('pages/restaurant-app', {
     ...defaults,
     restaurantApp
+  })
+})
+
+app.get('/subscribe', async (req, res) => {
+  const api = await initApi(req)
+  const defaults = await handleRequest(api)
+  const newsletterForm = await api.getSingle('newsletter_form')
+
+  res.render('pages/subscribe', {
+    ...defaults,
+    newsletterForm
   })
 })
 

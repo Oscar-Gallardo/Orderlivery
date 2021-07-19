@@ -1,0 +1,13 @@
+extends ../base.pug
+
+block variables
+  - var template = 'subscribe'
+
+block main
+  .subscribe
+    .subscribe__wrapper
+      .subscribe__title=newsletterForm.data.title
+      .form
+        .form__wrapper
+          each form in newsletterForm.data.hubspot_form
+            .form__html!=form.text
